@@ -1,0 +1,54 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type LoginResponse {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type RefreshTokenResponse {
+  accessToken: String!
+}
+
+type Post {
+  id: Int!
+  title: String!
+  content: String!
+  author: User!
+  viewers: [User]
+}
+
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  role: UserRole!
+  posts: [Post]
+  viewedPosts: [Post]
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+type Query {
+  hello: String!
+  users(pagination: PaginationInput!): [User!]!
+  user(id: Int!): User!
+  posts(pagination: PaginationInput!): [Post!]!
+  post(id: Float!): Post!
+}
+
+input PaginationInput {
+  skip: Int!
+  take: Int!
+}
+
+type Mutation {
+  createUser(email: String!, name: String!, password: String!, role: UserRole!): User!
+  login(email: String!, password: String!): LoginResponse!
+  refreshToken: RefreshTokenResponse!
+  createPost(title: String!, content: String!): Post!
+}

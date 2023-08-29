@@ -9,6 +9,7 @@ $ npm install
 
 ```bash
 # Run this command if you are running the app for the first time
+$ npx prisma generate
 
 $ npx prisma db seed
 
@@ -18,8 +19,8 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
+# with docker compose
+$ docker-compose up
 ```
 
 ## Test
